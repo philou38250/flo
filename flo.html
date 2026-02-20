@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Médecine Chinoise Traditionnelle - Cabinet à Monestier de Clermont</title>
+    <style>
+        :root {
+            --yin-color: #000;
+            --yang-color: #fff;
+            --accent-red: #c62828;
+            --accent-gold: #d4af37;
+            --light-bg: #f8f4f0;
+            --dark-bg: #1a1a1a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-bg);
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(to right, var(--yin-color), var(--dark-bg));
+            color: var(--yang-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle at 30px 30px, var(--yang-color) 0%, var(--yang-color) 25%, var(--yin-color) 25%, var(--yin-color) 100%);
+            border-radius: 50%;
+            margin-right: 15px;
+            position: relative;
+        }
+        
+        .logo-icon::before, .logo-icon::after {
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+        }
+        
+        .logo-icon::before {
+            background-color: var(--yin-color);
+            top: 22.5px;
+            left: 22.5px;
+        }
+        
+        .logo-icon::after {
+            background-color: var(--yang-color);
+            bottom: 22.5px;
+            right: 22.5px;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 1.5rem;
+        }
+        
+        nav a {
+            color: var(--yang-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-gold);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1600334089641-b1df94a81b68?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--yang-color);
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-red);
+            color: var(--yang-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        
+        .btn:hover {
+            background-color: #b71c1c;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--yang-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--yang-color);
+            color: var(--dark-bg);
+        }
+        
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--yin-color), var(--accent-red), var(--yin-color));
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-red);
+        }
+        
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: var(--yang-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-red);
+        }
+        
+        /* Gift Cards */
+        .gift-cards {
+            background-color: var(--dark-bg);
+            color: var(--yang-color);
+            text-align: center;
+            border-radius: 10px;
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gift-cards::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+        
+        .gift-cards h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
+        
+        .gift-cards p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* Contact */
+        .contact-container {
+            display: flex;
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-red);
+        }
+        
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+        
+        .contact-details p {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-details i {
+            margin-right: 10px;
+            color: var(--accent-red);
+        }
+        
+        .contact-form {
+            flex: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--yang-color);
+            padding: 3rem 2rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-gold);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-red);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column a {
+            color: var(--yang-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent-gold);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 1rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav li {
+                margin: 0.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon"></div>
+                <div class="logo-text">
+                    <h1>Médecine Chinoise Traditionnelle</h1>
+                    <p>Équilibre du corps et de l'esprit</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#apropos">À propos</a></li>
+                    <li><a href="#medecine">Médecine traditionnelle</a></li>
+                    <li><a href="#techniques">Autres techniques</a></li>
+                    <li><a href="#infos">Infos pratiques</a></li>
+                    <li><a href="#action">Champs d'action</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Retrouvez l'équilibre avec la médecine chinoise</h2>
+            <p>Acupuncture, massage Tui Na, moxibustion et ventouses dans un cadre apaisant à Monestier de Clermont, près de Grenoble</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn">Prendre rendez-vous</a>
+                <a href="#infos" class="btn btn-outline">En savoir plus</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- À propos -->
+    <section id="apropos">
+        <div class="section-title">
+            <h2>À propos</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Praticienne en médecine chinoise">
+            </div>
+            <div class="about-text">
+                <h3>Votre praticienne en médecine chinoise</h3>
+                <p>Diplômée en médecine traditionnelle chinoise avec plus de 15 ans d'expérience, je vous accueille dans mon cabinet à Monestier de Clermont, dans un cadre apaisant inspiré de la culture chinoise.</p>
+                <p>Ma pratique s'appuie sur les principes millénaires de la médecine chinoise visant à rétablir l'équilibre énergétique du corps et à stimuler ses capacités d'auto-guérison.</p>
+                <p>Je propose des soins personnalisés adaptés à vos besoins spécifiques, qu'il s'agisse de douleurs chroniques, de troubles digestifs, de problèmes de stress ou de recherche d'un mieux-être général.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Médecine traditionnelle -->
+    <section id="medecine">
+        <div class="section-title">
+            <h2>Médecine traditionnelle</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Acupuncture">
+                </div>
+                <div class="service-content">
+                    <h3>Acupuncture</h3>
+                    <p>L'acupuncture consiste en l'insertion de fines aiguilles en des points précis du corps pour rétablir la circulation de l'énergie vitale (Qi). Elle est particulièrement efficace pour traiter les douleurs, les troubles du sommeil et les déséquilibres émotionnels.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Moxibustion">
+                </div>
+                <div class="service-content">
+                    <h3>Moxibustion</h3>
+                    <p>La moxibustion utilise la chaleur dégagée par la combustion d'une herbe, l'armoise, pour stimuler des points d'acupuncture. Cette technique est idéale pour renforcer le système immunitaire et traiter les problèmes de froid interne.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Ventouses">
+                </div>
+                <div class="service-content">
+                    <h3>Ventouses</h3>
+                    <p>La thérapie par ventouses consiste à appliquer des coupelles sur la peau pour créer une succion. Cette méthode aide à débloquer les énergies stagnantes, améliorer la circulation sanguine et soulager les tensions musculaires.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1594736797933-d0c1382d7e32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Réflexologie plantaire">
+                </div>
+                <div class="service-content">
+                    <h3>Réflexologie plantaire</h3>
+                    <p>La réflexologie plantaire est une technique de massage des pieds qui stimule des points réflexes correspondant à différents organes et parties du corps. Elle favorise la relaxation, améliore la circulation et aide à rééquilibrer les fonctions corporelles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Autres techniques -->
+    <section id="techniques">
+        <div class="section-title">
+            <h2>Autres techniques</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1544164356-91e63b1deb7c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Massage Tui Na">
+                </div>
+                <div class="service-content">
+                    <h3>Massage Tui Na</h3>
+                    <p>Le Tui Na est un massage thérapeutique chinois qui combine pressions, étirements et mobilisations pour harmoniser l'énergie du corps. Il est particulièrement efficace pour les problèmes musculo-squelettiques et les tensions nerveuses.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Massage ventral">
+                </div>
+                <div class="service-content">
+                    <h3>Massage ventral</h3>
+                    <p>Le massage abdominal, ou Chi Nei Tsang, vise à libérer les tensions et blocages situés dans l'abdomen, considéré comme le centre énergétique du corps. Il améliore la digestion et l'équilibre émotionnel.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Traitement TAC">
+                </div>
+                <div class="service-content">
+                    <h3>Traitement des TAC</h3>
+                    <p>L'acupuncture offre une approche naturelle pour traiter les Troubles Anxieux Chroniques (TAC) en rééquilibrant le système nerveux et en apaisant l'esprit. Les séances aident à réduire le stress et l'anxiété de manière durable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cartes cadeaux -->
+    <section class="gift-cards">
+        <h3>Cadeaux de Noël</h3>
+        <p>Offrez un moment de bien-être à vos proches avec nos cartes cadeaux pour les fêtes de fin d'année. Idéal pour un cadeau original et bénéfique pour la santé.</p>
+        <a href="#contact" class="btn">Commander une carte cadeau</a>
+    </section>
+
+    <!-- Infos pratiques -->
+    <section id="infos">
+        <div class="section-title">
+            <h2>Infos pratiques</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Horaires et rendez-vous</h3>
+                <p>Le cabinet est ouvert du lundi au vendredi de 9h à 19h, et le samedi de 9h à 13h.</p>
+                <p>Une séance dure généralement entre 45 minutes et 1 heure.</p>
+                <p>La première consultation inclut un bilan énergétique complet et dure environ 1h30.</p>
+                <p>Pour prendre rendez-vous, vous pouvez m'appeler au 04 76 00 00 00 ou utiliser le formulaire de contact.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cabinet de médecine chinoise">
+            </div>
+        </div>
+    </section>
+
+    <!-- Champs d'action -->
+    <section id="action">
+        <div class="section-title">
+            <h2>Champs d'action</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-content">
+                    <h3>Douleurs et inflammations</h3>
+                    <p>Mal de dos, cervicalgies, tendinites, arthrose, migraines, sciatiques</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-content">
+                    <h3>Troubles digestifs</h3>
+                    <p>Ballonnements, constipation, diarrhée, reflux gastrique, syndrome du côlon irritable</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-content">
+                    <h3>Problèmes émotionnels</h3>
+                    <p>Stress, anxiété, dépression, insomnie, burn-out, troubles du sommeil</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-content">
+                    <h3>Problèmes gynécologiques</h3>
+                    <p>Syndromes prémenstruels, troubles du cycle, ménopause, fertilité</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-content">
+                    <h3>Allergies et immunité</h3>
+                    <p>Rhume des foins, asthme, sinusites à répétition, fatigue chronique</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-content">
+                    <h3>Accompagnement</h3>
+                    <p>Sevrage tabagique, perte de poids, préparation aux examens, convalescence</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="section-title">
+            <h2>Contact</h2>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Coordonnées</h3>
+                <div class="contact-details">
+                    <p><i>📍</i> Rue du Docteur Mazet, 38650 Monestier de Clermont</p>
+                    <p><i>📞</i> 04 76 00 00 00</p>
+                    <p><i>✉️</i> contact@medecine-chinoise-38.fr</p>
+                </div>
+                <h3>Horaires d'ouverture</h3>
+                <div class="contact-details">
+                    <p>Lundi - Vendredi : 9h - 19h</p>
+                    <p>Samedi : 9h - 13h</p>
+                    <p>Dimanche : Fermé</p>
+                </div>
+                <h3>Accès</h3>
+                <p>Le cabinet est situé à Monestier de Clermont, à 30 minutes de Grenoble. Parking gratuit disponible à proximité.</p>
+            </div>
+            <div class="contact-form">
+                <h3>Prendre rendez-vous</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Nom et prénom</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" placeholder="Précisez la raison de votre consultation et vos disponibilités"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Envoyer</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Médecine Chinoise</h3>
+                <ul>
+                    <li><a href="#apropos">À propos</a></li>
+                    <li><a href="#medecine">Médecine traditionnelle</a></li>
+                    <li><a href="#techniques">Autres techniques</a></li>
+                    <li><a href="#action">Champs d'action</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Informations</h3>
+                <ul>
+                    <li><a href="#infos">Horaires et tarifs</a></li>
+                    <li><a href="#contact">Prendre rendez-vous</a></li>
+                    <li><a href="#contact">Cartes cadeaux</a></li>
+                    <li><a href="#contact">Accès au cabinet</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li>📍 Rue du Docteur Mazet, 38650 Monestier de Clermont</li>
+                    <li>📞 04 76 00 00 00</li>
+                    <li>✉️ contact@medecine-chinoise-38.fr</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Médecine Chinoise Traditionnelle - Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
